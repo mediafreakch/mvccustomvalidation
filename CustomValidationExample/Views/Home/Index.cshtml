@@ -1,0 +1,49 @@
+﻿@model CustomValidationExample.Models.ArticleModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ArticleModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartPrice)
+            @Html.ValidationMessageFor(model => model.StartPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BuyNowPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BuyNowPrice)
+            @Html.ValidationMessageFor(model => model.BuyNowPrice)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
